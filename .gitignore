@@ -1,0 +1,57 @@
+# ========================================
+# ⚙️ Logs & debug
+# ========================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ========================================
+# 📦 Dependencies & build outputs
+# ========================================
+node_modules/
+dist/
+build/
+coverage/             # ✅ Jest 커버리지 리포트
+dist-ssr/
+*.local
+
+# ========================================
+# 🧪 Test related
+# ========================================
+*.tsbuildinfo         # TS incremental build info
+.jest-cache/
+.jest-test-results.json
+.vitest/
+.vitest_cache/
+
+# ========================================
+# 🧑‍💻 Environment files
+# ========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ========================================
+# 🧭 IDE / OS files
+# ========================================
+.vscode/*
+!.vscode/extensions.json   # 추천 확장만 남기기
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ========================================
+# 🚀 Package manager
+# ========================================
+.pnpm-debug.log
+.pnp.*
