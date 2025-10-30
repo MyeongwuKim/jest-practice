@@ -11,7 +11,7 @@ export function PrimaryButton() {
 
   return (
     <div>
-      <button onClick={handleClick}>불러오기</button>
+      <button onClick={handleClick}>유저 불러오기</button>
       {user && <p data-testid="username">{user.name}</p>}
     </div>
   );

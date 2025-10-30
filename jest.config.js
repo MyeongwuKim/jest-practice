@@ -1,13 +1,14 @@
 /** @type {import('jest').Config} */
 const config = {
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   roots: ["<rootDir>/src"],
-  setupFilesAfterEnv: ["<rootDir>/src/mocks/setupTests.ts"],
-
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   transform: {
     "^.+\\.[tj]sx?$": "babel-jest", // ✅ TypeScript + JS 전부 Babel로 처리
   },
-
+  transform: {
+    "^.+\\.[tj]sx?$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.json" }],
+  },
   transformIgnorePatterns: [
     "node_modules/(?!msw|@mswjs|@open-draft|until-async)/", // ✅ ESM 패키지 변환 허용
   ],
