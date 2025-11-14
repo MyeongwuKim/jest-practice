@@ -10,5 +10,5 @@ test("버튼 클릭 시 유저 이름이 표시된다", async () => {
 
   // Mock 응답 결과가 렌더링되는지 확인
   const username = await screen.findByTestId("username");
-  expect(username).toHaveTextContent("김명우");
+  expect(username).toHaveTextContent(/^김철수$/);
 });

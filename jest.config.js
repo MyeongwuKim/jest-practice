@@ -1,25 +1,30 @@
-/** @type {import('jest').Config} */
-const config = {
-  testEnvironment: "jsdom",
+export default {
   roots: ["<rootDir>/src"],
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
-  transform: {
-    "^.+\\.[tj]sx?$": "babel-jest", // ✅ TypeScript + JS 전부 Babel로 처리
-  },
-  transform: {
-    "^.+\\.[tj]sx?$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.json" }],
-  },
-  transformIgnorePatterns: [
-    "node_modules/(?!msw|@mswjs|@open-draft|until-async)/", // ✅ ESM 패키지 변환 허용
-  ],
+  testEnvironment: "jsdom",
 
-  testEnvironmentOptions: {
-    customExportConditions: ["node", "require", "default"], // ✅ ESM export 조건 맞추기
+  transform: {
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            tsx: true, // 🔥 TSX 변환 필수
+          },
+          transform: {
+            react: {
+              runtime: "automatic", // 🔥 JSX → React 변환 필수
+              development: false,
+            },
+          },
+        },
+      },
+    ],
   },
+
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 
   moduleNameMapper: {
-    "^(\\.{1,2}/.*)\\.js$": "$1", // ✅ TS import 경로 안정화
+    "^(\\.{1,2}/.*)\\.js$": "$1",
   },
 };
-
-export default config;

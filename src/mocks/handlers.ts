@@ -15,7 +15,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        name: "김명우",
+        name: "김철수",
       })
     );
   }),
